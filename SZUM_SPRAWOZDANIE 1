@@ -1,0 +1,19 @@
+// wpisujemy w terminalu
+roscore    //uruchamiamy w 1 terminalu
+rosrun turtlesim turtlesim_node //uruchamiamy w 2 terminalu symulacje zolwia
+export ROS_MASTER_URI=http:// IP:11311/      // w miejsce IP wpisujemy ip komputera ktory ma byc masterem
+export ROS_IP= IP             // w miejsce IP po znaku =  wpisujemy ip komputera z ktorym chcemy sie polaczyc lub jesli jestesmy masterem to swoje ip
+
+// wpisujemy w pliku matlab
+
+polozenie=rossubscriber('/turtle1/pose')  // odczytuje pozycje z ROS
+
+
+while( 1)
+polozenieobecne=receive(polozenie,2);   // zapisuje do polozenieobecne wartości odebrane położenia
+display(polozenieobecne);
+plot(polozenieobecne.X,polozenieobecne.Y,'x');  //wyswietla polozenie X i Y żółwia
+hold on
+xlim([0 12])
+ylim([0 12])
+end
